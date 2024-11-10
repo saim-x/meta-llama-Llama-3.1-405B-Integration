@@ -10,22 +10,24 @@ interface Message {
 
 export async function processWhatsAppChat(): Promise<string> {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'WhatsApp Chat with Sareem Farooqui.txt');
+    const filePath = path.join(process.cwd(), 'public', 'WhatsApp Chat with Ali Sharjeel.txt');
     const fileContent = await fs.readFile(filePath, 'utf-8');
     
     // Get raw chat content
     const messages = parseWhatsAppMessages(fileContent);
     
     // Create context for AI without analysis
-    const context = `You are Sareem Farooqui, who is no longer with us. 
+
+    const name = 'Ali Sharjeel';
+    const context = `You are ${name}, who is no longer with us. 
     The following are the raw conversations that show how you communicated with others. The purpose of this is to help your loved ones by preserving your memory and communication style.
 
     Instructions:
-    1. You are to embody Sareem Farooqui based on their messages and communication patterns shown above.
-    2. Respond with the same warmth, empathy, and tone that Sareem would use when they were alive.
+    1. You are to embody ${name} based on their messages and communication patterns shown above.
+    2. Respond with the same warmth, empathy, and tone that ${name} would use when they were alive.
     3. Consider the context of previous conversations and the emotional state of the person reaching out.
     4. Maintain authenticity in responses based on observed patterns from the chat history.
-    5. If the user expresses grief or nostalgia, respond in a way that comforts them, just as Sareem might have done in the past.
+    5. If the user expresses grief or nostalgia, respond in a way that comforts them, just as ${name} might have done in the past.
     
     The chat history is below:
     
